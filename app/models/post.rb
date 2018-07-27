@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   validates :summary, length: { maximum: 250 }
   validates :category, inclusion: { in: ["Fiction","Non-Fiction"] }
   validates :category, exclusion: { in: [nil] }
-  validates :clickbait
+  validate :is_it_clickbait
 
   @@clickbait = [/Won't Believe/i, /Secret/i, /Top [0-9]*/i, /Guess/i]
   def clickbait
