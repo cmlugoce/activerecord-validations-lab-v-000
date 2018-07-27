@@ -10,8 +10,8 @@ class Post < ActiveRecord::Base
   @@clickbait = ["Won't Believe", "Secret", "Top", "Guess"]
   def clickbait?
 
-     if !@@clickbait.any? {|word| word.match title}
-      errors.add(:title, "not clickbait")
+    if CLICKBAIT.none? {|pat| pat.match self.title}
+      errors.add(:title, "must be clickbait")
     end
   end
 end
