@@ -7,10 +7,10 @@ class Post < ActiveRecord::Base
   validates :category, exclusion: { in: [nil] }
   validates :clickbait
 
-  @clickbait = ["Won't Believe", "Secret", "Top", "Guess"]
+  @@clickbait = ["Won't Believe", "Secret", "Top", "Guess"]
   def clickbait?
 
-     if !@clickbait.any? {|word| word.match title}
+     if !@@clickbait.any? {|word| word.match title}
       errors.add(:title, "not clickbait")
     end
   end
