@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
   @@clickbait = [/Won't Believe/i, /Secret/i, /Top [0-9]*/i, /Guess/i]
   def clickbait?
 
-    if @@clickbait.none? {|pat| pat.match self.title}
+    if @@clickbait.none? {|word| word.match self.title}
       errors.add(:title, "must be clickbait")
     end
   end
